@@ -1,11 +1,9 @@
 import unittest
-from main_function import  custom_hypot
+from main_function import custom_hypot
 
 class TestCustomHypotenuse(unittest.TestCase):
 
-
-
-    def parameters_are_incorrect(self):
+    def test_parameters_are_incorrect(self):
         with self.assertRaises(TypeError):
             custom_hypot(-3, 0)
         with self.assertRaises(TypeError):
@@ -49,8 +47,9 @@ class TestCustomHypotenuse(unittest.TestCase):
 
 
 
-    def parameters_are_null(self):
-        self.assertEqual(custom_hypot(), 0)
+    def test_parameters_are_null(self):
+        with self.assertRaises(TypeError):
+            custom_hypot()
         with self.assertRaises(TypeError):
             custom_hypot({}, {})
         with self.assertRaises(TypeError):
@@ -60,9 +59,9 @@ class TestCustomHypotenuse(unittest.TestCase):
         self.assertEqual(custom_hypot(0, 0), 0)
 
 
-    def parameters_are_correct(self):
+    def test_parameters_are_correct(self):
         self.assertEqual(custom_hypot(3, 4), 5)
-        self.assertEqual(custom_hypot(9, 16), 25)
+        self.assertEqual(custom_hypot(9, 12), 15)
         self.assertEqual(custom_hypot(3.0, 4.0), 5.0)
         self.assertNotEqual(custom_hypot(20, 30), 40)
         self.assertNotEqual(custom_hypot(3.89, 4.90), 25)
